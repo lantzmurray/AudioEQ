@@ -122,78 +122,71 @@ struct SpectrumAnalyzerView: View {
 
 class SpectrumAnalyzer: ObservableObject {
     @Published var spectrumData: [Float] = []
-    
+
     private var audioEngine: AudioEngineManager?
-    private var displayLink: CADisplayLink?
+    private var timer: Timer?
     private let fftSize = 1024
     private var isRunning = false
-    
+
     init() {
-        // Initialize with empty spectrum data
-        spectrumData = Array(repeating: 0.0, count: 64) // 64 frequency bands
+        spectrumData = Array(repeating: 0.0, count: 64)
     }
-    
+
     func start() {
         guard !isRunning else { return }
-        
         isRunning = true
-        
-        // Start display link for real-time updates
-        displayLink = CADisplayLink(target: self, selector: #selector(updateSpectrum))
-        displayLink?.preferredFramesPerSecond = 30
-        displayLink?.add(to: .main, forMode: .common)
-        
-        // Start audio analysis
+
+        // 30Hz refresh rate for smooth animation
+        timer = Timer.scheduledTimer(
+            withTimeInterval: 1.0 / 30.0,
+            repeats: true
+        ) { [weak self] _ in
+            self?.updateSpectrum()
+        }
+
         audioEngine?.startAnalysis()
     }
-    
+
     func stop() {
         guard isRunning else { return }
-        
         isRunning = false
-        
-        displayLink?.invalidate()
-        displayLink = nil
-        
+
+        timer?.invalidate()
+        timer = nil
         audioEngine?.stopAnalysis()
     }
-    
-    @objc private func updateSpectrum() {
-        // This would get real spectrum data from the audio engine
-        // For now, generate mock data for visualization
+
+    private func updateSpectrum() {
+        // Replace with real FFT later
         generateMockSpectrumData()
     }
-    
+
     private func generateMockSpectrumData() {
-        // Generate mock spectrum data for demonstration
         let time = Date().timeIntervalSince1970
         var newData: [Float] = []
-        
+
         for i in 0..<64 {
-            // Create some interesting patterns
             let frequency = Double(i) / 64.0
-            let amplitude = sin(time * 2.0 + frequency * 10.0) * 0.3 +
-                          sin(time * 3.7 + frequency * 15.0) * 0.2 +
-                          sin(time * 1.3 + frequency * 5.0) * 0.5
-            
-            // Normalize to 0-1 range
-            let normalizedAmplitude = (amplitude + 1.0) * 0.5
-            
-            // Apply some frequency-specific shaping
-            let shapedAmplitude = normalizedAmplitude * exp(-frequency * 2.0)
-            
-            newData.append(Float(shapedAmplitude))
+            let amplitude =
+                sin(time * 2.0 + frequency * 10.0) * 0.3 +
+                sin(time * 3.7 + frequency * 15.0) * 0.2 +
+                sin(time * 1.3 + frequency * 5.0) * 0.5
+
+            let normalized = (amplitude + 1) * 0.5
+            let shaped = normalized * exp(-frequency * 2.0)
+            newData.append(Float(shaped))
         }
-        
+
         DispatchQueue.main.async {
             self.spectrumData = newData
         }
     }
-    
+
     deinit {
         stop()
     }
 }
+
 
 struct SpectrumAnalyzerView_Previews: PreviewProvider {
     static var previews: some View {

@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		27472BC42EC79A6000DB8017 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27472BC22EC79A6000DB8017 /* ContentView.swift */; };
-		27472BC52EC79A6000DB8017 /* AudioEQApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27472BC32EC79A6000DB8017 /* AudioEQApp.swift */; };
 		27A217F42EC7A7D30091E726 /* EQSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A217F12EC7A7D30091E726 /* EQSettings.swift */; };
 		27A217F52EC7A7D30091E726 /* AudioDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A217F22EC7A7D30091E726 /* AudioDevice.swift */; };
 		27A217F62EC7A7D30091E726 /* DeviceProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A217F32EC7A7D30091E726 /* DeviceProfile.swift */; };
@@ -20,14 +18,27 @@
 		27A218042EC7CD810091E726 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A217FC2EC7CD810091E726 /* SettingsView.swift */; };
 		27A218052EC7CD810091E726 /* DeviceSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A217FD2EC7CD810091E726 /* DeviceSelectorView.swift */; };
 		27A218062EC7CD810091E726 /* PresetManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A217FE2EC7CD810091E726 /* PresetManagerView.swift */; };
+		27A5B7132EC801DE00114BD3 /* DeviceProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A5B7102EC801DD00114BD3 /* DeviceProfileViewModel.swift */; };
+		27A5B7142EC801DE00114BD3 /* EQViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A5B7112EC801DD00114BD3 /* EQViewModel.swift */; };
+		27A5B7152EC801DE00114BD3 /* AudioEngineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A5B7122EC801DD00114BD3 /* AudioEngineViewModel.swift */; };
+		27A5B71B2EC801F900114BD3 /* UserPreferencesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A5B7162EC801F900114BD3 /* UserPreferencesManager.swift */; };
+		27A5B71C2EC801F900114BD3 /* ExternalDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A5B7172EC801F900114BD3 /* ExternalDataService.swift */; };
+		27A5B71D2EC801F900114BD3 /* AudioEngineManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A5B7182EC801F900114BD3 /* AudioEngineManager.swift */; };
+		27A5B71E2EC801F900114BD3 /* DeviceProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A5B7192EC801F900114BD3 /* DeviceProfileManager.swift */; };
+		27A5B71F2EC801F900114BD3 /* PresetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A5B71A2EC801F900114BD3 /* PresetManager.swift */; };
+		27A5B7222EC8021900114BD3 /* EQAudioUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A5B7202EC8021900114BD3 /* EQAudioUnit.swift */; };
+		27A5B7232EC8021900114BD3 /* AudioDeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A5B7212EC8021900114BD3 /* AudioDeviceManager.swift */; };
+		27A5B7272EC8023100114BD3 /* AudioEQApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A5B7252EC8023100114BD3 /* AudioEQApp.swift */; };
+		27A5B7282EC8023100114BD3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A5B7262EC8023100114BD3 /* ContentView.swift */; };
+		27A5B72B2EC8BEE400114BD3 /* GraphicBand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A5B72A2EC8BEE400114BD3 /* GraphicBand.swift */; };
+		27A5B72D2EC8BF1F00114BD3 /* ParametricBand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A5B72C2EC8BF1F00114BD3 /* ParametricBand.swift */; };
+		27A5B72F2EC8E64C00114BD3 /* FrequencyPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A5B72E2EC8E64C00114BD3 /* FrequencyPoint.swift */; };
 		A1B2C3D4E5F6G7H8I0J1K2L7 /* Views in Resources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6G7H8I9J0K1L8 /* Views */; };
 		A1B2C3D4E5F6G7H8I0J1K2L9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6G7H8I9J0K1M0 /* Preview Assets.xcassets */; };
 		A1B2C3D4E5F6G7H8I0J1K2M1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6G7H8I9J0K1M2 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		27472BC22EC79A6000DB8017 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = App/ContentView.swift; sourceTree = "<group>"; };
-		27472BC32EC79A6000DB8017 /* AudioEQApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AudioEQApp.swift; path = App/AudioEQApp.swift; sourceTree = "<group>"; };
 		27A217F12EC7A7D30091E726 /* EQSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EQSettings.swift; sourceTree = "<group>"; };
 		27A217F22EC7A7D30091E726 /* AudioDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioDevice.swift; sourceTree = "<group>"; };
 		27A217F32EC7A7D30091E726 /* DeviceProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceProfile.swift; sourceTree = "<group>"; };
@@ -39,8 +50,23 @@
 		27A217FC2EC7CD810091E726 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		27A217FD2EC7CD810091E726 /* DeviceSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceSelectorView.swift; sourceTree = "<group>"; };
 		27A217FE2EC7CD810091E726 /* PresetManagerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresetManagerView.swift; sourceTree = "<group>"; };
+		27A5B7102EC801DD00114BD3 /* DeviceProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceProfileViewModel.swift; sourceTree = "<group>"; };
+		27A5B7112EC801DD00114BD3 /* EQViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EQViewModel.swift; sourceTree = "<group>"; };
+		27A5B7122EC801DD00114BD3 /* AudioEngineViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioEngineViewModel.swift; sourceTree = "<group>"; };
+		27A5B7162EC801F900114BD3 /* UserPreferencesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferencesManager.swift; sourceTree = "<group>"; };
+		27A5B7172EC801F900114BD3 /* ExternalDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalDataService.swift; sourceTree = "<group>"; };
+		27A5B7182EC801F900114BD3 /* AudioEngineManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioEngineManager.swift; sourceTree = "<group>"; };
+		27A5B7192EC801F900114BD3 /* DeviceProfileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceProfileManager.swift; sourceTree = "<group>"; };
+		27A5B71A2EC801F900114BD3 /* PresetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresetManager.swift; sourceTree = "<group>"; };
+		27A5B7202EC8021900114BD3 /* EQAudioUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EQAudioUnit.swift; sourceTree = "<group>"; };
+		27A5B7212EC8021900114BD3 /* AudioDeviceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioDeviceManager.swift; sourceTree = "<group>"; };
+		27A5B7252EC8023100114BD3 /* AudioEQApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioEQApp.swift; sourceTree = "<group>"; };
+		27A5B7262EC8023100114BD3 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		27A5B72A2EC8BEE400114BD3 /* GraphicBand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicBand.swift; sourceTree = "<group>"; };
+		27A5B72C2EC8BF1F00114BD3 /* ParametricBand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParametricBand.swift; sourceTree = "<group>"; };
+		27A5B72E2EC8E64C00114BD3 /* FrequencyPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyPoint.swift; sourceTree = "<group>"; };
 		A1B2C3D4E5F6G7H8I9J0K1M0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		A1B2C3D4E5F6G7H8I9J0K1M1 /* .app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = .app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1B2C3D4E5F6G7H8I9J0K1M1 /* AudioEQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioEQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1B2C3D4E5F6G7H8I9J0K1M2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -51,9 +77,30 @@
 				27A217F12EC7A7D30091E726 /* EQSettings.swift */,
 				27A217F22EC7A7D30091E726 /* AudioDevice.swift */,
 				27A217F32EC7A7D30091E726 /* DeviceProfile.swift */,
+				27A5B72A2EC8BEE400114BD3 /* GraphicBand.swift */,
+				27A5B72C2EC8BF1F00114BD3 /* ParametricBand.swift */,
+				27A5B72E2EC8E64C00114BD3 /* FrequencyPoint.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
+		};
+		27A5B7242EC8023100114BD3 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				27A5B7292EC8027D00114BD3 /* Extensions */,
+				27A5B7252EC8023100114BD3 /* AudioEQApp.swift */,
+				27A5B7262EC8023100114BD3 /* ContentView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		27A5B7292EC8027D00114BD3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Extensions;
+			path = AudioEQ/Extensions;
+			sourceTree = SOURCE_ROOT;
 		};
 		A1B2C3D4E5F6G7H8I9J0K1L8 /* Views */ = {
 			isa = PBXGroup;
@@ -73,6 +120,9 @@
 		A1B2C3D4E5F6G7H8I9J0K1L9 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				27A5B7122EC801DD00114BD3 /* AudioEngineViewModel.swift */,
+				27A5B7102EC801DD00114BD3 /* DeviceProfileViewModel.swift */,
+				27A5B7112EC801DD00114BD3 /* EQViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -80,6 +130,11 @@
 		A1B2C3D4E5F6G7H8I9J0K1LA /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				27A5B7182EC801F900114BD3 /* AudioEngineManager.swift */,
+				27A5B7192EC801F900114BD3 /* DeviceProfileManager.swift */,
+				27A5B7172EC801F900114BD3 /* ExternalDataService.swift */,
+				27A5B71A2EC801F900114BD3 /* PresetManager.swift */,
+				27A5B7162EC801F900114BD3 /* UserPreferencesManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -87,6 +142,8 @@
 		A1B2C3D4E5F6G7H8I9J0K1LB /* Core Audio */ = {
 			isa = PBXGroup;
 			children = (
+				27A5B7212EC8021900114BD3 /* AudioDeviceManager.swift */,
+				27A5B7202EC8021900114BD3 /* EQAudioUnit.swift */,
 			);
 			path = "Core Audio";
 			sourceTree = "<group>";
@@ -103,9 +160,8 @@
 		A1B2C3D4E5F6G7H8I9J0K1M5 /* AudioEQ */ = {
 			isa = PBXGroup;
 			children = (
+				27A5B7242EC8023100114BD3 /* App */,
 				27A217F02EC7A7D30091E726 /* Models */,
-				27472BC32EC79A6000DB8017 /* AudioEQApp.swift */,
-				27472BC22EC79A6000DB8017 /* ContentView.swift */,
 				A1B2C3D4E5F6G7H8I9J0K1L8 /* Views */,
 				A1B2C3D4E5F6G7H8I9J0K1L9 /* ViewModels */,
 				A1B2C3D4E5F6G7H8I9J0K1LA /* Services */,
@@ -118,7 +174,7 @@
 		A1B2C3D4E5F6G7H8I9J0K1MB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A1B2C3D4E5F6G7H8I9J0K1M1 /* .app */,
+				A1B2C3D4E5F6G7H8I9J0K1M1 /* AudioEQ.app */,
 			);
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -139,7 +195,7 @@
 			);
 			name = AudioEQ;
 			productName = AudioEQ;
-			productReference = A1B2C3D4E5F6G7H8I9J0K1M1 /* .app */;
+			productReference = A1B2C3D4E5F6G7H8I9J0K1M1 /* AudioEQ.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -193,19 +249,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27A5B72D2EC8BF1F00114BD3 /* ParametricBand.swift in Sources */,
+				27A5B7132EC801DE00114BD3 /* DeviceProfileViewModel.swift in Sources */,
+				27A5B7282EC8023100114BD3 /* ContentView.swift in Sources */,
 				27A218022EC7CD810091E726 /* ParametricEQView.swift in Sources */,
+				27A5B71C2EC801F900114BD3 /* ExternalDataService.swift in Sources */,
+				27A5B71D2EC801F900114BD3 /* AudioEngineManager.swift in Sources */,
 				27A217FF2EC7CD810091E726 /* EQModeToggle.swift in Sources */,
 				27A218062EC7CD810091E726 /* PresetManagerView.swift in Sources */,
+				27A5B72B2EC8BEE400114BD3 /* GraphicBand.swift in Sources */,
 				27A218012EC7CD810091E726 /* SpectrumAnalyzerView.swift in Sources */,
 				27A218032EC7CD810091E726 /* HelpView.swift in Sources */,
 				27A218002EC7CD810091E726 /* GraphicEQView.swift in Sources */,
-				27472BC42EC79A6000DB8017 /* ContentView.swift in Sources */,
 				27A217F42EC7A7D30091E726 /* EQSettings.swift in Sources */,
+				27A5B7152EC801DE00114BD3 /* AudioEngineViewModel.swift in Sources */,
 				27A218052EC7CD810091E726 /* DeviceSelectorView.swift in Sources */,
+				27A5B71E2EC801F900114BD3 /* DeviceProfileManager.swift in Sources */,
+				27A5B7142EC801DE00114BD3 /* EQViewModel.swift in Sources */,
 				27A217F52EC7A7D30091E726 /* AudioDevice.swift in Sources */,
+				27A5B71B2EC801F900114BD3 /* UserPreferencesManager.swift in Sources */,
+				27A5B71F2EC801F900114BD3 /* PresetManager.swift in Sources */,
+				27A5B7222EC8021900114BD3 /* EQAudioUnit.swift in Sources */,
 				27A217F62EC7A7D30091E726 /* DeviceProfile.swift in Sources */,
-				27472BC52EC79A6000DB8017 /* AudioEQApp.swift in Sources */,
+				27A5B7272EC8023100114BD3 /* AudioEQApp.swift in Sources */,
+				27A5B7232EC8021900114BD3 /* AudioDeviceManager.swift in Sources */,
 				27A218042EC7CD810091E726 /* SettingsView.swift in Sources */,
+				27A5B72F2EC8E64C00114BD3 /* FrequencyPoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,11 +347,13 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = AudioEQ;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -349,10 +420,12 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = AudioEQ;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};

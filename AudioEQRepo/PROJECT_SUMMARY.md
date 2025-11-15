@@ -4,6 +4,16 @@
 
 AudioEQ is a fully-featured macOS audio equalizer application with professional-grade capabilities. The project has been successfully implemented with all core features and is ready for testing and distribution.
 
+## 📚 Documentation
+
+This project includes comprehensive documentation:
+
+- **[README.md](README.md)**: Project overview, features, and getting started guide
+- **[USER_GUIDE.md](USER_GUIDE.md)**: Detailed user manual with step-by-step instructions
+- **[API_DOCUMENTATION.md](API_DOCUMENTATION.md)**: Complete API reference for developers
+- **[DEVELOPER_DOCUMENTATION.md](DEVELOPER_DOCUMENTATION.md)**: Architecture and development guidelines
+- **[AudioEQ_App_Architecture.md](AudioEQ_App_Architecture.md)**: Technical architecture overview
+
 ## ✅ Completed Features
 
 ### Core Architecture
@@ -55,7 +65,10 @@ AudioEQ/
 │   ├── Models/                      # Data models
 │   │   ├── AudioDevice.swift          # Device representation
 │   │   ├── DeviceProfile.swift       # Profile with measurements
-│   │   └── EQSettings.swift         # EQ configurations
+│   │   ├── EQSettings.swift         # EQ configurations
+│   │   ├── GraphicBand.swift         # Graphic EQ band data
+│   │   ├── ParametricBand.swift      # Parametric EQ band data
+│   │   └── FrequencyPoint.swift      # Frequency response data
 │   ├── Views/                       # SwiftUI interface components
 │   │   ├── DeviceSelectorView.swift   # Device picker
 │   │   ├── EQModeToggle.swift        # Mode switcher
@@ -212,3 +225,12 @@ AudioEQ/
 **AudioEQ is now ready for the final phases of testing, code signing, and distribution!** 🎵
 
 The project represents a complete, professional-grade audio equalizer application that rivals commercial alternatives like Soundsource and EQmac, with the added benefits of open-source flexibility and community-driven device profiles.
+
+## 📖 Documentation Reference
+
+For detailed information about using, developing with, or extending AudioEQ, please refer to the comprehensive documentation included in this repository:
+
+- **For Users**: See [USER_GUIDE.md](USER_GUIDE.md) for complete usage instructions
+- **For Developers**: See [DEVELOPER_DOCUMENTATION.md](DEVELOPER_DOCUMENTATION.md) for architecture and contribution guidelines
+- **For API Reference**: See [API_DOCUMENTATION.md](API_DOCUMENTATION.md) for detailed API documentation
+- **For Architecture**: See [AudioEQ_App_Architecture.md](AudioEQ_App_Architecture.md) for technical architecture details

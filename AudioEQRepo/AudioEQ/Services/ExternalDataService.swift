@@ -2,8 +2,6 @@
 //  ExternalDataService.swift
 //  AudioEQ
 //
-//  Created by Developer on 11/14/25.
-//
 
 import Foundation
 
@@ -11,11 +9,7 @@ class ExternalDataService {
     private let session = URLSession.shared
     
     func fetchOratory1990Data() async throws -> [DeviceProfile] {
-        // In a real implementation, this would fetch data from Oratory1990's GitHub repository
-        // For now, we'll return mock data that simulates the structure
-        
-        // Simulate network delay
-        try await Task.sleep(nanoseconds: 1_000_000_000) // 1 second
+        try await Task.sleep(nanoseconds: 1_000_000_000)
         
         return [
             DeviceProfile(
@@ -58,11 +52,7 @@ class ExternalDataService {
     }
     
     func fetchCrinacleData() async throws -> [DeviceProfile] {
-        // In a real implementation, this would fetch data from Crinacle's database
-        // For now, we'll return mock data
-        
-        // Simulate network delay
-        try await Task.sleep(nanoseconds: 1_500_000_000) // 1.5 seconds
+        try await Task.sleep(nanoseconds: 1_500_000_000)
         
         return [
             DeviceProfile(
@@ -104,7 +94,7 @@ class ExternalDataService {
         ]
     }
     
-    // MARK: - Mock Data Generation
+    // MARK: - Response Generators
     
     private func generateOratory1990Response(for model: String) -> [FrequencyPoint] {
         switch model {
@@ -141,33 +131,6 @@ class ExternalDataService {
         default:
             return generateDefaultFrequencyResponse()
         }
-    }
-    
-    private func generateOratory1990EQ(for model: String) -> EQSettings {
-        let preset = EQSettings(name: "\(model) Target", mode: .parametric)
-        
-        switch model {
-        case "HD650":
-            preset.parametricBands = [
-                ParametricBand(frequency: 60, gain: 1.2, q: 0.8, filterType: .bell),
-                ParametricBand(frequency: 250, gain: 0.5, q: 1.0, filterType: .bell),
-                ParametricBand(frequency: 1000, gain: -0.8, q: 1.2, filterType: .bell),
-                ParametricBand(frequency: 4000, gain: -2.1, q: 1.5, filterType: .bell),
-                ParametricBand(frequency: 12000, gain: 3.5, q: 2.0, filterType: .highShelf)
-            ]
-        case "DT770":
-            preset.parametricBands = [
-                ParametricBand(frequency: 80, gain: 0.8, q: 0.7, filterType: .bell),
-                ParametricBand(frequency: 300, gain: -1.2, q: 1.0, filterType: .bell),
-                ParametricBand(frequency: 1000, gain: -1.8, q: 1.2, filterType: .bell),
-                ParametricBand(frequency: 4000, gain: -3.2, q: 1.8, filterType: .bell),
-                ParametricBand(frequency: 14000, gain: 2.5, q: 2.5, filterType: .highShelf)
-            ]
-        default:
-            break
-        }
-        
-        return preset
     }
     
     private func generateCrinacleResponse(for model: String) -> [FrequencyPoint] {
@@ -207,35 +170,77 @@ class ExternalDataService {
         }
     }
     
-    private func generateCrinacleEQ(for model: String) -> EQSettings {
-        let preset = EQSettings(name: "\(model) Target", mode: .parametric)
-        
-        switch model {
-        case "AirPodsPro":
-            preset.parametricBands = [
-                ParametricBand(frequency: 50, gain: 4.5, q: 0.6, filterType: .lowShelf),
-                ParametricBand(frequency: 200, gain: -2.8, q: 1.0, filterType: .bell),
-                ParametricBand(frequency: 1000, gain: -1.8, q: 1.2, filterType: .bell),
-                ParametricBand(frequency: 6000, gain: -3.5, q: 2.0, filterType: .bell),
-                ParametricBand(frequency: 12000, gain: 8.5, q: 2.5, filterType: .highShelf)
-            ]
-        case "WH1000XM4":
-            preset.parametricBands = [
-                ParametricBand(frequency: 60, gain: 3.2, q: 0.7, filterType: .lowShelf),
-                ParametricBand(frequency: 250, gain: -2.1, q: 1.0, filterType: .bell),
-                ParametricBand(frequency: 1000, gain: -1.2, q: 1.2, filterType: .bell),
-                ParametricBand(frequency: 5000, gain: -3.8, q: 1.8, filterType: .bell),
-                ParametricBand(frequency: 14000, gain: 7.5, q: 2.2, filterType: .highShelf)
-            ]
-        default:
-            break
-        }
-        
-        return preset
+    private func generateDefaultFrequencyResponse() -> [FrequencyPoint] {
+        let base = [20, 30, 60, 125, 250, 500, 1000, 2000, 4000, 8000, 16000, 20000]
+        return base.map { FrequencyPoint(frequency: Double($0), amplitude: 0.0) }
     }
     
-    private func generateDefaultFrequencyResponse() -> [FrequencyPoint] {
-        let frequencies = [20, 30, 60, 125, 250, 500, 1000, 2000, 4000, 8000, 16000, 20000]
-        return frequencies.map { FrequencyPoint(frequency: $0, amplitude: 0.0) }
+    // MARK: - EQ Presets
+    
+    private func generateOratory1990EQ(for model: String) -> EQSettings {
+        switch model {
+        case "HD650":
+            return EQSettings(
+                name: "\(model) Target",
+                mode: .parametric,
+                graphicBands: [],
+                parametricBands: [
+                    ParametricBand(frequency: 60, gain: 1.2, q: 0.8, filterType: .bell),
+                    ParametricBand(frequency: 250, gain: 0.5, q: 1.0, filterType: .bell),
+                    ParametricBand(frequency: 1000, gain: -0.8, q: 1.2, filterType: .bell),
+                    ParametricBand(frequency: 4000, gain: -2.1, q: 1.5, filterType: .bell),
+                    ParametricBand(frequency: 12000, gain: 3.5, q: 2.0, filterType: .highShelf)
+                ]
+            )
+        case "DT770":
+            return EQSettings(
+                name: "\(model) Target",
+                mode: .parametric,
+                graphicBands: [],
+                parametricBands: [
+                    ParametricBand(frequency: 80, gain: 0.8, q: 0.7, filterType: .bell),
+                    ParametricBand(frequency: 300, gain: -1.2, q: 1.0, filterType: .bell),
+                    ParametricBand(frequency: 1000, gain: -1.8, q: 1.2, filterType: .bell),
+                    ParametricBand(frequency: 4000, gain: -3.2, q: 1.8, filterType: .bell),
+                    ParametricBand(frequency: 14000, gain: 2.5, q: 2.5, filterType: .highShelf)
+                ]
+            )
+        default:
+            return EQSettings(name: "\(model) Target", mode: .parametric)
+        }
+    }
+    
+    private func generateCrinacleEQ(for model: String) -> EQSettings {
+        switch model {
+        case "AirPodsPro":
+            return EQSettings(
+                name: "\(model) Target",
+                mode: .parametric,
+                graphicBands: [],
+                parametricBands: [
+                    ParametricBand(frequency: 50, gain: 4.5, q: 0.6, filterType: .lowShelf),
+                    ParametricBand(frequency: 200, gain: -2.8, q: 1.0, filterType: .bell),
+                    ParametricBand(frequency: 1000, gain: -1.8, q: 1.2, filterType: .bell),
+                    ParametricBand(frequency: 6000, gain: -3.5, q: 2.0, filterType: .bell),
+                    ParametricBand(frequency: 12000, gain: 8.5, q: 2.5, filterType: .highShelf)
+                ]
+            )
+        case "WH1000XM4":
+            return EQSettings(
+                name: "\(model) Target",
+                mode: .parametric,
+                graphicBands: [],
+                parametricBands: [
+                    ParametricBand(frequency: 60, gain: 2.8, q: 0.8, filterType: .bell),
+                    ParametricBand(frequency: 350, gain: -3.2, q: 1.0, filterType: .bell),
+                    ParametricBand(frequency: 1000, gain: -1.5, q: 1.3, filterType: .bell),
+                    ParametricBand(frequency: 4000, gain: -3.8, q: 1.7, filterType: .bell),
+                    ParametricBand(frequency: 12000, gain: 6.5, q: 2.5, filterType: .highShelf)
+                ]
+            )
+        default:
+            return EQSettings(name: "\(model) Target", mode: .parametric)
+        }
     }
 }
+

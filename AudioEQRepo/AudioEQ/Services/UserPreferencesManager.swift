@@ -87,9 +87,20 @@ class UserPreferencesManager: ObservableObject {
     
     // MARK: - Initialization
     private init() {
+        // 1. Provide initial values for all @Published properties
+        selectedDeviceID = nil
+        lastUsedPreset = nil
+        autoStartProcessing = false
+        showSpectrumAnalyzer = true
+        defaultEQMode = .graphic
+        enableNotifications = false
+        checkForUpdates = false
+        lastExternalDataUpdate = nil
+
+        // 2. Then load stored preferences (safe to call after full initialization)
         loadPreferences()
     }
-    
+
     // MARK: - Methods
     func loadPreferences() {
         selectedDeviceID = userDefaults.object(forKey: Keys.selectedDeviceID) as? AudioDeviceID
@@ -196,15 +207,4 @@ class UserPreferencesManager: ObservableObject {
     }
 }
 
-// MARK: - AudioDeviceID Extension
-extension AudioDeviceID: Codable {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        self = try container.decode(Int.self)
-    }
-    
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        try container.encode(self)
-    }
-}
+

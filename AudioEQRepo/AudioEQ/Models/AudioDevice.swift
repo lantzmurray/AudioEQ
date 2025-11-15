@@ -9,16 +9,21 @@ import Foundation
 import CoreAudio
 import AVFoundation
 
-struct AudioDevice: Identifiable, Equatable {
-    let id: AudioDeviceID
+// Make sure AudioDeviceID exists in this module
+typealias AudioDeviceID = UInt32
+
+struct AudioDevice: Identifiable, Equatable, Codable, Hashable {
+    typealias ID = UInt32
+
+    let id: UInt32
     let name: String
     let manufacturer: String
     let uid: String
     let deviceType: DeviceType
     let channels: Int
     let sampleRate: Double
-    
-    enum DeviceType: String, CaseIterable {
+
+    enum DeviceType: String, CaseIterable, Codable {
         case builtIn = "Built-in"
         case usb = "USB"
         case bluetooth = "Bluetooth"

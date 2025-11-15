@@ -56,8 +56,8 @@ class DeviceProfileManager {
     
     private func getDefaultProfiles() -> [DeviceProfile] {
         return [
-            DeviceProfile.example,
-            DeviceProfile.airpodsPro,
+            //DeviceProfile.example,
+            //DeviceProfile.airpodsPro,
             DeviceProfile(
                 name: "Sony WH-1000XM4",
                 manufacturer: "Sony",
@@ -71,7 +71,12 @@ class DeviceProfileManager {
                     FrequencyPoint(frequency: 10000, amplitude: -1.8),
                     FrequencyPoint(frequency: 20000, amplitude: -10.5)
                 ],
-                recommendedEQ: EQSettings(name: "Sony WH-1000XM4 Target"),
+                recommendedEQ: EQSettings(
+                    name: "Sony WH-1000XM4 Target",
+                    mode: .graphic,
+                    graphicBands: GraphicBand.default10Band,
+                    parametricBands: []
+                ),
                 dataSource: .crinacle
             ),
             DeviceProfile(
@@ -87,11 +92,17 @@ class DeviceProfileManager {
                     FrequencyPoint(frequency: 10000, amplitude: 2.1),
                     FrequencyPoint(frequency: 20000, amplitude: -5.2)
                 ],
-                recommendedEQ: EQSettings(name: "DT 990 Pro Target"),
+                recommendedEQ: EQSettings(
+                    name: "DT 990 Pro Target",
+                    mode: .graphic,
+                    graphicBands: GraphicBand.default10Band,
+                    parametricBands: []
+                ),
                 dataSource: .oratory1990
             )
         ]
     }
+
     
     func exportProfiles() -> URL? {
         let profiles = getAllProfiles()
@@ -140,35 +151,19 @@ class DeviceProfileManager {
     }
 }
 
-// Extension to make DeviceProfile codable work properly
-extension DeviceProfile {
-    enum CodingKeys: String, CodingKey {
-        case id, name, manufacturer, model, deviceType, frequencyResponse, recommendedEQ, dataSource, dateAdded
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(id, forKey: .id)
-        try container.encode(name, forKey: .name)
-        try container.encode(manufacturer, forKey: .manufacturer)
-        try container.encode(model, forKey: .model)
-        try container.encode(deviceType, forKey: .deviceType)
-        try container.encode(frequencyResponse, forKey: .frequencyResponse)
-        try container.encode(recommendedEQ, forKey: .recommendedEQ)
-        try container.encode(dataSource, forKey: .dataSource)
-        try container.encode(dateAdded, forKey: .dateAdded)
-    }
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        id = try container.decode(UUID.self, forKey: .id)
-        name = try container.decode(String.self, forKey: .name)
-        manufacturer = try container.decode(String.self, forKey: .manufacturer)
-        model = try container.decode(String.self, forKey: .model)
-        deviceType = try container.decode(DeviceType.self, forKey: .deviceType)
-        frequencyResponse = try container.decode([FrequencyPoint].self, forKey: .frequencyResponse)
-        recommendedEQ = try container.decode(EQSettings.self, forKey: .recommendedEQ)
-        dataSource = try container.decode(DataSource.self, forKey: .dataSource)
-        dateAdded = try container.decode(Date.self, forKey: .dateAdded)
-    }
+
+
+extension GraphicBand {
+    static let default10Band: [GraphicBand] = [
+        GraphicBand(frequency: 32, gain: 0),
+        GraphicBand(frequency: 64, gain: 0),
+        GraphicBand(frequency: 125, gain: 0),
+        GraphicBand(frequency: 250, gain: 0),
+        GraphicBand(frequency: 500, gain: 0),
+        GraphicBand(frequency: 1000, gain: 0),
+        GraphicBand(frequency: 2000, gain: 0),
+        GraphicBand(frequency: 4000, gain: 0),
+        GraphicBand(frequency: 8000, gain: 0),
+        GraphicBand(frequency: 16000, gain: 0)
+    ]
 }

@@ -2,8 +2,6 @@
 //  PresetManager.swift
 //  AudioEQ
 //
-//  Created by Developer on 11/14/25.
-//
 
 import Foundation
 
@@ -46,7 +44,7 @@ class PresetManager {
     
     private func getDefaultPresets() -> [EQSettings] {
         return [
-            EQSettings.flat,
+            .flat,
             EQSettings(name: "Vocal Boost", mode: .graphic),
             EQSettings(name: "Bass Boost", mode: .graphic),
             EQSettings(name: "Treble Boost", mode: .graphic),
@@ -56,16 +54,18 @@ class PresetManager {
             EQSettings(name: "Electronic", mode: .graphic)
         ]
     }
+
+
     
     func createPresetFromGraphicBands(_ bands: [GraphicBand], name: String) -> EQSettings {
-        var preset = EQSettings(name: name, mode: .graphic)
-        preset.graphicBands = bands
+        var preset = EQSettings(name: name, mode: .graphic, graphicBands: [], parametricBands: [])
+        preset.graphicBands = bands   // works now because property is var
         return preset
     }
     
     func createPresetFromParametricBands(_ bands: [ParametricBand], name: String) -> EQSettings {
-        var preset = EQSettings(name: name, mode: .parametric)
-        preset.parametricBands = bands
+        var preset = EQSettings(name: name, mode: .parametric, graphicBands: [], parametricBands: [])
+        preset.parametricBands = bands   // works now because property is var
         return preset
     }
     
@@ -91,32 +91,5 @@ class PresetManager {
         savePresets(existingPresets)
         
         return presets
-    }
-}
-
-// Extension to make EQSettings codable work properly
-extension EQSettings {
-    enum CodingKeys: String, CodingKey {
-        case id, name, mode, graphicBands, parametricBands, isEnabled
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(id, forKey: .id)
-        try container.encode(name, forKey: .name)
-        try container.encode(mode, forKey: .mode)
-        try container.encode(graphicBands, forKey: .graphicBands)
-        try container.encode(parametricBands, forKey: .parametricBands)
-        try container.encode(isEnabled, forKey: .isEnabled)
-    }
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        id = try container.decode(UUID.self, forKey: .id)
-        name = try container.decode(String.self, forKey: .name)
-        mode = try container.decode(EQMode.self, forKey: .mode)
-        graphicBands = try container.decode([GraphicBand].self, forKey: .graphicBands)
-        parametricBands = try container.decode([ParametricBand].self, forKey: .parametricBands)
-        isEnabled = try container.decode(Bool.self, forKey: .isEnabled)
     }
 }

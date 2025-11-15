@@ -62,7 +62,8 @@ struct ContentView: View {
                     
                     // EQ interface
                     TabView(selection: $eqViewModel.mode) {
-                        GraphicEQView()
+                        GraphicEQView(bands: $eqViewModel.graphicBands)
+
                             .tag(EQMode.graphic)
                             .environmentObject(eqViewModel)
                         

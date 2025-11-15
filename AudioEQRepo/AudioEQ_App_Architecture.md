@@ -7,7 +7,7 @@ AudioEQ is a native macOS application that provides advanced audio equalization 
 - **Language**: Swift 5.7+
 - **UI Framework**: SwiftUI
 - **Audio Framework**: Core Audio (Audio Unit, Audio Queue)
-- **Data Persistence**: Core Data + UserDefaults
+- **Data Persistence**: UserDefaults + JSON serialization
 - **Architecture Pattern**: MVVM (Model-View-ViewModel)
 
 ## System Architecture
@@ -39,7 +39,7 @@ graph TB
   - Low-latency processing
 
 ### 2. EQ Processing Engine
-- **Graphic EQ**: 10-band fixed frequency (31, 63, 125, 250, 500, 1k, 2k, 4k, 8k, 16k Hz)
+- **Graphic EQ**: 10-band fixed frequency (31, 63, 125, 250, 500, 1k, 2k, 4k, 8k, 16k Hz) with ±12dB gain range
 - **Parametric EQ**: Up to 8 configurable bands with:
   - Frequency: 20Hz - 20kHz
   - Q factor: 0.1 - 10
@@ -47,8 +47,8 @@ graph TB
   - Filter types: Bell, Low Shelf, High Shelf, Low Pass, High Pass
 
 ### 3. Device Profile System
-- **Local Storage**: Core Data model for device profiles
-- **External Integration**: 
+- **Local Storage**: JSON-based storage with UserDefaults
+- **External Integration**:
   - Oratory1990 measurement data parsing
   - Crinacle database integration
   - Custom measurement import
@@ -71,26 +71,28 @@ graph LR
 
 ### Device Profile
 ```swift
-struct DeviceProfile {
+struct DeviceProfile: Identifiable, Codable {
     let id: UUID
     let name: String
     let manufacturer: String
     let model: String
-    let type: DeviceType // .headphone, .speaker, .inEar
+    let deviceType: DeviceType // .headphone, .speaker, .inEar, .studioMonitor, .earbud
     let frequencyResponse: [FrequencyPoint]
     let recommendedEQ: EQSettings
-    let dataSource: DataSource // .local, .oratory1990, .crinacle
+    let dataSource: DataSource // .local, .oratory1990, .crinacle, .custom
+    let dateAdded: Date
 }
 ```
 
 ### EQ Settings
 ```swift
-struct EQSettings {
-    let id: UUID
-    let name: String
-    let graphicBands: [GraphicBand]
-    let parametricBands: [ParametricBand]
-    let mode: EQMode // .graphic, .parametric, .combined
+struct EQSettings: Identifiable, Codable, Hashable {
+    var id: UUID
+    var name: String
+    var mode: EQMode // .graphic, .parametric
+    var graphicBands: [GraphicBand]
+    var parametricBands: [ParametricBand]
+    var isEnabled: Bool
 }
 ```
 
